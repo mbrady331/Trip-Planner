@@ -716,7 +716,18 @@ def itinerary_agent(state: TripState) -> TripState:
     user_input = (req.get("user_input") or "").strip()
     
     prompt_parts = [
-        "Create a {duration} itinerary for {destination} ({travel_style}).",
+        "Create a beautiful, detailed {duration} itinerary for {destination} ({travel_style} style).",
+        "",
+        "Format the response as well-structured markdown with:",
+        "- A compelling title with destination and duration",
+        "- Brief overview section",
+        "- Each day as a separate section with ## Day X: [Theme]",
+        "- Morning, Afternoon, Evening subsections with ### headers",
+        "- Use bullet points for activities with emojis and details",
+        "- Include practical tips, estimated times, and costs where relevant",
+        "- Add a final section with packing tips and reminders",
+        "",
+        "Make it visually appealing and easy to follow!",
         "",
         "Inputs:",
         "Research: {research}",

@@ -8,6 +8,84 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* Enhanced itinerary styling */
+    .itinerary-content {
+      line-height: 1.7;
+    }
+    .itinerary-content h1 {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    .itinerary-content h2 {
+      position: relative;
+      padding-left: 1rem;
+      border-left: 4px solid #6366f1;
+      background: linear-gradient(90deg, #f8fafc 0%, #f1f5f9 100%);
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      margin: 2rem 0 1rem 0;
+    }
+    .itinerary-content h3 {
+      color: #374151;
+      font-weight: 600;
+      margin: 1.5rem 0 0.75rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .itinerary-content h3::before {
+      content: "📍";
+      font-size: 1.2em;
+    }
+    .itinerary-content ul {
+      margin: 1rem 0;
+      padding-left: 0;
+    }
+    .itinerary-content li {
+      margin: 0.75rem 0;
+      padding: 0.75rem;
+      background: #f8fafc;
+      border-radius: 0.5rem;
+      border-left: 3px solid #e2e8f0;
+      transition: all 0.2s ease;
+    }
+    .itinerary-content li:hover {
+      background: #f1f5f9;
+      border-left-color: #6366f1;
+      transform: translateX(2px);
+    }
+    .itinerary-content strong {
+      color: #1f2937;
+      font-weight: 600;
+    }
+    .itinerary-content em {
+      color: #6b7280;
+      font-style: italic;
+    }
+    .itinerary-content blockquote {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      position: relative;
+    }
+    .itinerary-content blockquote::before {
+      content: "💡";
+      position: absolute;
+      top: -0.5rem;
+      left: 1rem;
+      background: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 1.2em;
+    }
+  </style>
 </head>
 <body class="bg-neutral-50 text-neutral-900 antialiased font-[Inter]">
   <!-- Nav -->
@@ -339,7 +417,7 @@
                 <i data-lucide="printer" class="h-4 w-4"></i> Print / PDF
               </button>
             </div>
-            <div class="prose max-w-none">${content}</div>
+            <div class="itinerary-content prose prose-lg max-w-none prose-headings:text-neutral-900 prose-headings:font-semibold prose-h1:text-3xl prose-h1:mb-4 prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4 prose-h2:text-indigo-600 prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3 prose-h3:text-neutral-800 prose-p:text-neutral-700 prose-p:leading-relaxed prose-ul:my-4 prose-li:text-neutral-700 prose-li:leading-relaxed prose-strong:text-neutral-900 prose-strong:font-semibold prose-em:text-neutral-600 prose-blockquote:border-l-4 prose-blockquote:border-indigo-200 prose-blockquote:bg-indigo-50 prose-blockquote:pl-4 prose-blockquote:py-2 prose-blockquote:rounded-r-lg">${content}</div>
           </div>
         `;
         renderIcons();
