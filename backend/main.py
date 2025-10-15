@@ -84,7 +84,7 @@ def _init_llm():
                 tool_calls: List[Dict[str, Any]] = []
             return _Msg()
 
-    if os.getenv("TEST_MODE"):
+    if os.getenv("TEST_MODE", "0").lower() not in {"0", "false", "no"}:
         return _Fake()
     if os.getenv("OPENAI_API_KEY"):
         return ChatOpenAI(model="gpt-3.5-turbo", temperature=0.7, max_tokens=1500)
@@ -157,7 +157,7 @@ class LocalGuideRetriever:
         self._vectorstore: Optional[InMemoryVectorStore] = None
         
         # Only create embeddings when RAG is enabled and we have an API key
-        if ENABLE_RAG and self._docs and not os.getenv("TEST_MODE"):
+        if ENABLE_RAG and self._docs and os.getenv("TEST_MODE", "0").lower() in {"0", "false", "no"}:
             try:
                 model = os.getenv("OPENAI_EMBED_MODEL", "text-embedding-3-small")
                 self._embeddings = OpenAIEmbeddings(model=model)
